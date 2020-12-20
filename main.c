@@ -23,7 +23,7 @@ int main(__attribute__((unused))int argc, char **argv)
 		/* get opcode = pall or push */
 		opcode = strtok(buffer, " ");
 		/* get the opcode, no need to return */
-		get_opcode_function(opcode)(&head_list, line_number);
+		get_opcode_function(opcode, &head_list, line_number);
 		/* *data = NULL ??????????? data = strtok(NULL, " , \n");
 		printf("%s\n", data); */
 	}
