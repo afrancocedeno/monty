@@ -8,7 +8,7 @@ void opcode_pall(stack_t **head_list, unsigned int line_number);
  * @opcode_input:
  * @line_number:
  */
-void (*get_opcode_function(char *opcode_input))(stack_t **head_list, unsigned int line_number)
+void get_opcode_function(char *opcode_input, stack_t **head_list, unsigned int line_number)
 {
 	instruction_t function[] = {
 	    {"push", opcode_push},
@@ -17,18 +17,7 @@ void (*get_opcode_function(char *opcode_input))(stack_t **head_list, unsigned in
 	int i = 0;
 
 	/* find the input function in our opcode function */
-	for (; function[i].opcode != NULL && function[i].opcode != opcode_input; i++)
+	for (; function[i].opcode != NULL && *(function[i].opcode) != opcode_input; i++)
 		;
-	(function[i].f);
-	return EXIT_SUCCESS;
-}
-
-void opcode_push(__attribute__((unused))stack_t **head_list, unsigned int line_number)
-{
-	printf("line: %d\n", line_number);
-}
-
-void opcode_pall(__attribute__((unused))stack_t **head_list, unsigned int line_number)
-{
-	printf("line: %d\n", line_number);
+	function[i].f(head_list, line_number);
 }
