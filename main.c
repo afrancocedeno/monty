@@ -14,14 +14,16 @@ int main(__attribute__((unused))int argc, char **argv)
 	size_t 	bytes_qty = 0;
 	
 	file_pointer = fopen(*(argv + 1), "r");
-	getline(&buffer, &bytes_qty, file_pointer);
-	printf("printf buffer: %s", buffer);
-	function = strtok(buffer, " ");
-	printf("monty function: %s\n", function); 
-	data = strtok(NULL, "\n");
-	printf("monty first data: %s\n", data);
+	while (getline(&buffer, &bytes_qty, file_pointer) != EOF)
+	{
+		function = strtok(buffer, " ");
+		printf("%s\n", function); 
+		data = strtok(NULL, "\n, ");
+		printf("%s\n", data);
+	}
 	fclose(file_pointer);
 	free(buffer);
-
 	return (0);
+	/* edge cases, no number argument */
+	/* edge case, more or less than two argvs */
 }
