@@ -33,4 +33,5 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 char *new_line_remove(char *buffer);
+void (*get_opcode_function(char *opcode_input))(stack_t **head_list, unsigned int line_number);
 #endif
