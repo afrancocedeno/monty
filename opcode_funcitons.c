@@ -71,8 +71,17 @@ void opcode_pall(stack_t **head_list, unsigned int line_number)
 
 void opcode_pint(stack_t **head_list, unsigned int line_number)
 {
-	stack_t *top = *head_list;
+	stack_t *top_element = *head_list;
 	(void)line_number;
 
-	printf("%d\n", (*top).n);
+	printf("%d\n", (*top_element).n);
+}
+
+void opcode_pop(stack_t **head_list, unsigned int line_number)
+{
+	stack_t *top_element = *head_list;
+	(void)line_number;
+
+	head_list = (*head_list).next;
+	free(top_element);
 }
