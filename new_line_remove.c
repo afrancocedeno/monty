@@ -1,10 +1,9 @@
 #include "monty.h"
 
 /**
- * new_line_remove -
- * @buffer:
- *
- * Return:
+ * new_line_remove - missing description
+ * @buffer: missing description
+ * Return: Nothing
  */
 char *new_line_remove(char *buffer)
 {
