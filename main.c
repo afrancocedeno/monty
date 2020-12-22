@@ -36,8 +36,6 @@ int main(int argc, char **argv)
 		opcode = strtok(var_t.buffer, " ");
 		get_opcode_function(opcode, &var_t.head_list, var_t.line_number);
 	}
-
-	fclose(var_t.file_pointer);
 	free_dlistint();
 	return (0);
 }
