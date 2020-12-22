@@ -63,6 +63,8 @@ void free_dlistint(void)
 			free(free_list->prev);
 		}
 	}
+	if (var_t.file_pointer)
+		fclose(var_t.file_pointer);
 	free(free_list);
 	free(var_t.buffer);
 
