@@ -68,3 +68,11 @@ void opcode_pall(stack_t **head_list, unsigned int line_number)
 		temp = temp->next;
 	}
 }
+
+void opcode_pint(stack_t **head_list, unsigned int line_number)
+{
+	stack_t *top = *head_list;
+	(void)line_number;
+
+	printf("%d\n", (*top).n);
+}
