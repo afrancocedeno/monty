@@ -32,12 +32,11 @@ int main(int argc, char **argv)
 		!= EOF; var_t.line_number++)
 	{
 		/* remove new line */
-		if (var_t.buffer == NULL)
-			continue;
 		var_t.buffer = new_line_remove(var_t.buffer);
 		opcode = strtok(var_t.buffer, " ");
-		if (opcode != NULL)
-			get_opcode_function(opcode, &var_t.head_list, var_t.line_number);
+		if (opcode == NULL)
+			continue;
+		get_opcode_function(opcode, &var_t.head_list, var_t.line_number);
 	}
 	free_dlistint();
 	return (0);
