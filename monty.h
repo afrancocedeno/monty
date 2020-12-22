@@ -4,6 +4,7 @@
 #include <string.h> /* strok */
 #include <stdlib.h> /* free */
 
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
