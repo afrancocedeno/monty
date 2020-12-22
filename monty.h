@@ -3,7 +3,7 @@
 #include <stdio.h> /* fopen */
 #include <string.h> /* strok */
 #include <stdlib.h> /* free */
-
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -35,7 +35,7 @@ typedef struct instruction_s
 } instruction_t;
 
 /**
-* variables_s - variables
+* struct variables_s - variables
 * @file_pointer: missing description
 * @buffer: missing description
 * @line_number: missing description
@@ -52,12 +52,11 @@ typedef struct variables_s
 	size_t bytes_qty;
 	instruction_t *instru;
 	stack_t *head_list;
-}var;
-
+} var;
 var var_t;
-
 char *new_line_remove(char *buffer);
-void get_opcode_function(char *opcode_input, stack_t **head_list, unsigned int line_number);
+void get_opcode_function(char *opcode_input,
+	stack_t **head_list, unsigned int line_number);
 void opcode_push(stack_t **head_list, unsigned int line_number);
 void opcode_pall(stack_t **head_list, unsigned int line_number);
 void free_dlistint(void);
