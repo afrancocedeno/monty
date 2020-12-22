@@ -14,6 +14,7 @@ void get_opcode_function(char *opcode_input, stack_t **head_list,
 		{"push", opcode_push},
 		{"pall", opcode_pall},
 		{"pint", opcode_pint},
+		{"pop", opcode_pop},
 		{NULL, NULL}
 	};
 	int i = 0;
