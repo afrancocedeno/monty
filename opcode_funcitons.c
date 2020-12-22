@@ -8,17 +8,28 @@
 */
 void opcode_push(stack_t **head_list, unsigned int line_number)
 {
-	stack_t *new = NULL;
-	stack_t *temp = NULL;
-	char *token = NULL;
-	int value = 0;
-	(void)line_number;
+	stack_t *new = NULL, *temp = NULL;
+	char *date = NULL;
+	int value = 0, i = 0;
 
-	token = strtok(NULL, " ");
-	if (token)
-		value = atoi(token);
-	else
-		value = 0;
+	date = strtok(NULL, " ");
+	if (date == NULL)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_dlistint(), exit(EXIT_FAILURE);
+	}
+	while (date[i] != '\0')
+	{
+		/*Return 1 when numeric character is passed*/
+		if (isdigit(date[i]) == 0)
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			free_dlistint();
+			exit(EXIT_FAILURE);
+		}
+		i++;
+	}
+	value = atoi(date);
 	new = (malloc(sizeof(stack_t)));
 	if (new == NULL)
 	{
