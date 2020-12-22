@@ -59,6 +59,7 @@ void get_opcode_function(char *opcode_input,
 	stack_t **head_list, unsigned int line_number);
 void opcode_push(stack_t **head_list, unsigned int line_number);
 void opcode_pall(stack_t **head_list, unsigned int line_number);
+void opcode_pint(stack_t **head_list, unsigned int line_number);
 void free_dlistint(void);
 
 #endif
