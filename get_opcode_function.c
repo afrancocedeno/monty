@@ -29,6 +29,13 @@ void get_opcode_function(char *opcode_input, stack_t **head_list,
 		}
 		i++;
 	}
+	if (function[i].opcode == NULL)
+	{
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode_input);
+		fclose(var_t.file_pointer);
+		free_dlistint();
+		exit(EXIT_FAILURE);
+	}
 }
 
 /**
@@ -57,4 +64,6 @@ void free_dlistint(void)
 		}
 	}
 	free(free_list);
+	free(var_t.buffer);
+
 }
