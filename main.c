@@ -4,30 +4,40 @@
 #include "monty.h"
 
 /**
- * 
- *
- */
-int main(__attribute__((unused))int argc, char **argv)
+* main - missing description
+* @argc: missing description
+* @argv: missing description
+* Return: - missing description
+*/
+int main(int argc, char **argv)
 {
-	FILE *file_pointer = NULL;
-	char *buffer = NULL, *opcode = NULL;
-	size_t bytes_qty = 0;
-	stack_t *head_list = NULL;
-	int line_number = 1;
+	char *opcode = NULL, *token_1 = NULL;
+	(void)token_1;
 
-	file_pointer = fopen(*(argv + 1), "r");
-	for (; getline(&buffer, &bytes_qty, file_pointer) != EOF; line_number++)
+	if (argc > 2 || argc == 0)
+	{
+		printf("USAGE: monty file");
+		return (EXIT_FAILURE);
+	}
+	if (argv[0] == NULL)
+	{
+		printf("Error: Can't open file <file>\n");
+		return (EXIT_FAILURE);
+	}
+
+	/*open file*/
+	var_t.file_pointer = fopen(*(argv + 1), "r");
+	for (; getline(&var_t.buffer, &var_t.bytes_qty, var_t.file_pointer)
+		!= EOF; var_t.line_number++)
 	{
 		/* remove new line */
-		buffer = new_line_remove(buffer);
-		/* get opcode = pall or push */
-		opcode = strtok(buffer, " ");
-		/* get the opcode, no need to return */
-		get_opcode_function(opcode, &head_list, line_number);
-		/* *data = NULL ??????????? data = strtok(NULL, " , \n");
-		printf("%s\n", data); */
+		var_t.buffer = new_line_remove(var_t.buffer);
+		opcode = strtok(var_t.buffer, " ");
+		get_opcode_function(opcode, &var_t.head_list, var_t.line_number);
 	}
-	fclose(file_pointer);
-	free(buffer);
+
+	fclose(var_t.file_pointer);
+	free_dlistint();
+	free(var_t.buffer);
 	return (0);
 }
