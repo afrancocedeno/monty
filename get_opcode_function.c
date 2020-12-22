@@ -13,6 +13,7 @@ void get_opcode_function(char *opcode_input, stack_t **head_list,
 	instruction_t function[] = {
 		{"push", opcode_push},
 		{"pall", opcode_pall},
+		{"pint", opcode_pint},
 		{NULL, NULL}
 	};
 	int i = 0;
