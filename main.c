@@ -11,22 +11,23 @@
 */
 int main(int argc, char **argv)
 {
-	char *opcode = NULL, *token_1 = NULL;
-	(void)token_1;
+	char *opcode = NULL;
+	var_t.line_number = 1;
 
-	if (argc > 2 || argc == 0)
+	if (argc != 2)
 	{
-		printf("USAGE: monty file");
-		return (EXIT_FAILURE);
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
 	}
-	if (argv[0] == NULL)
-	{
-		printf("Error: Can't open file <file>\n");
-		return (EXIT_FAILURE);
-	}
-
 	/*open file*/
 	var_t.file_pointer = fopen(*(argv + 1), "r");
+
+	if (var_t.file_pointer == NULL)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+
 	for (; getline(&var_t.buffer, &var_t.bytes_qty, var_t.file_pointer)
 		!= EOF; var_t.line_number++)
 	{
@@ -38,6 +39,5 @@ int main(int argc, char **argv)
 
 	fclose(var_t.file_pointer);
 	free_dlistint();
-	free(var_t.buffer);
 	return (0);
 }
