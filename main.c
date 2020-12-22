@@ -12,8 +12,8 @@
 int main(int argc, char **argv)
 {
 	char *opcode = NULL;
-	var_t.line_number = 1;
 
+	var_t.line_number = 1;
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
