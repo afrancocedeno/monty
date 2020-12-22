@@ -32,9 +32,33 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+/**
+* variables_s - variables
+* @file_pointer: missing description
+* @buffer: missing description
+* @line_number: missing description
+* @bytes_qty:missing description
+* @instru: missing description
+* @head_list: missing description
+*/
+
+typedef struct variables_s
+{
+	FILE *file_pointer;
+	char *buffer;
+	unsigned int line_number;
+	size_t bytes_qty;
+	instruction_t *instru;
+	stack_t *head_list;
+}var;
+
+var var_t;
+
 char *new_line_remove(char *buffer);
 void get_opcode_function(char *opcode_input, stack_t **head_list, unsigned int line_number);
 void opcode_push(stack_t **head_list, unsigned int line_number);
 void opcode_pall(stack_t **head_list, unsigned int line_number);
+void free_dlistint(void);
 
 #endif
