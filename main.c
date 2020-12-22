@@ -34,6 +34,8 @@ int main(int argc, char **argv)
 		/* remove new line */
 		var_t.buffer = new_line_remove(var_t.buffer);
 		opcode = strtok(var_t.buffer, " ");
+		if (opcode == NULL)
+			continue;
 		get_opcode_function(opcode, &var_t.head_list, var_t.line_number);
 	}
 	free_dlistint();
