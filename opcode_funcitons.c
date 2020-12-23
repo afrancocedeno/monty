@@ -87,6 +87,6 @@ void opcode_pop(stack_t **head_list, unsigned int line_number)
 	stack_t *top_element = *head_list;
 	(void)line_number;
 
-	head_list = (*(*head_list)).next;
+	*head_list = (*(*head_list)).next;
 	free(top_element);
 }
