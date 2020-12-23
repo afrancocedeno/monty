@@ -34,7 +34,6 @@ void get_opcode_function(char *opcode_input, stack_t **head_list,
 	if (function[i].opcode == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode_input);
-		fclose(var_t.file_pointer);
 		free_dlistint();
 		exit(EXIT_FAILURE);
 	}
@@ -69,5 +68,4 @@ void free_dlistint(void)
 		fclose(var_t.file_pointer);
 	free(free_list);
 	free(var_t.buffer);
-
 }
