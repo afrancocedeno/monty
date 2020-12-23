@@ -87,10 +87,14 @@ void opcode_pop(stack_t **head_list, unsigned int line_number)
 	stack_t *top_element = *head_list;
 	(void)line_number;
 
-	if (top_element->next != NULL)
+	if (top_element == NULL || top_element == NULL)
 	{
-		top_element->next->prev = NULL;
-		*head_list = (*(*head_list)).next;
+		fprintf(stderr,	"L%d: can't pop an empty stack\n", line_number);
+		free(var_t.buffer);
+		fclose(var_t.file_pointer);
+		exit(EXIT_FAILURE);
 	}
+	top_element->next->prev = NULL;
+	*head_list = (*top_element).next;
 	free(top_element);
 }
