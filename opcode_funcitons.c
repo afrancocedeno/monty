@@ -92,8 +92,6 @@ void opcode_pop(stack_t **head_list, unsigned int line_number)
 		fprintf(stderr,	"L%d: can't pop an empty stack\n", line_number);
 		free(var_t.buffer);
 		fclose(var_t.file_pointer);
-		if (*head_list || head_list)
-			free_list(head_list);
 		exit(EXIT_FAILURE);
 	}
 	top_element->next->prev = NULL;
