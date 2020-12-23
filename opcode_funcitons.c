@@ -69,6 +69,12 @@ void opcode_pall(stack_t **head_list, unsigned int line_number)
 	}
 }
 
+/**
+* opcode_pint - missing description
+* @head_list: missing description
+* @line_number: missing description
+* Return: Nothing
+*/
 void opcode_pint(stack_t **head_list, unsigned int line_number)
 {
 	stack_t *top_element = *head_list;
@@ -82,12 +88,38 @@ void opcode_pint(stack_t **head_list, unsigned int line_number)
 * @line_number: missing description
 * Return: Nothing
 */
-void opcode_pop(stack_t **head_list, __attribute__((unused))unsigned int line_number)
+void opcode_pop(stack_t **head_list, unsigned int line_number)
 {
 	stack_t *top_element = *head_list;
+	(void)line_number;
 
 	if (top_element->next != NULL)
 		top_element->next->prev = NULL;
 	*head_list = (*top_element).next;
 	free(top_element);
+}
+
+/**
+* opcode_swap - missing description
+* @head_list: missing description
+* @line_number: missing description
+* Return: Nothing
+*/
+void opcode_swap(stack_t **head_list, unsigned int line_number)
+{
+	int aux_n;
+	stack_t *ptr_tmp = *head_list;
+
+	if (ptr_tmp == NULL)
+		return;
+
+	if (ptr_tmp->next->next == NULL || ptr_tmp->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		free_dlistint();
+		exit(EXIT_FAILURE);
+	}
+	aux_n = ptr_tmp->next->n;
+	ptr_tmp->next->n = ptr_tmp->n;
+	ptr_tmp->n = aux_n;
 }
