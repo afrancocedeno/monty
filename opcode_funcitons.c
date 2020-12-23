@@ -92,7 +92,7 @@ void opcode_pop(stack_t **head_list, unsigned int line_number)
 		free(var_t.buffer);
 		fclose(var_t.file_pointer);
 		if (*head_list || head_list)
-			free_list(head_list);
+			free(head_list);
 		exit(EXIT_FAILURE);
 	}
 	else if (top_element->next == NULL)
