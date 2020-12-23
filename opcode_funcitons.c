@@ -91,23 +91,25 @@ void opcode_pint(stack_t **head_list, unsigned int line_number)
 void opcode_pop(stack_t **head_list, unsigned int line_number)
 {
 	stack_t *top_element = NULL;
-	(void)line_number;
 
-	while ((*(*head_list)).prev != NULL)
-		*head_list = (*(*head_list)).prev;
 	top_element = *head_list;
+
+	if (top_element == NULL)
+	{
+		fprintf(stderr, "L%d:  can't pop an empty stack\n", line_number);
+		free_dlistint();
+		exit(EXIT_FAILURE);
+	}
+
+	*head_list = top_element->next;
+
 	if (top_element->next != NULL)
 	{
 		top_element->next->prev = NULL;
-		*head_list = (*top_element).next;
 		free(top_element);
 	}
-	if (head_list == NULL || *head_list == NULL)
-	{
+	else
 		free_dlistint();
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		exit(EXIT_FAILURE);
-	}
 }
 
 /**
