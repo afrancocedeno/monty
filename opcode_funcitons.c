@@ -86,7 +86,8 @@ void opcode_pop(stack_t **head_list, __attribute__((unused))unsigned int line_nu
 {
 	stack_t *top_element = *head_list;
 
-	top_element->next->prev = NULL;
+	if (top_element->next != NULL)
+		top_element->next->prev = NULL;
 	*head_list = (*top_element).next;
 	free(top_element);
 }
