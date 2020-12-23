@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
-* get_opcode_function - m
+* get_opcode_function - mi
 * @opcode_input: missing description
 * @head_list: missing description
 * @line_number: missing description
