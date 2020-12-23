@@ -85,7 +85,6 @@ void opcode_pint(stack_t **head_list, unsigned int line_number)
 void opcode_pop(stack_t **head_list, unsigned int line_number)
 {
 	stack_t *top_element = *head_list;
-	(void)line_number;
 
 	if (top_element == NULL)
 	{
