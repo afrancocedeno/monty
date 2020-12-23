@@ -82,7 +82,7 @@ void opcode_pint(stack_t **head_list, unsigned int line_number)
 * @line_number: missing description
 * Return: Nothing
 */
-void opcode_pop(stack_t **head_list, unsigned int line_number)
+void opcode_pop(stack_t **head_list, __attribute__((unused))unsigned int line_number)
 {
 	stack_t *top_element = *head_list;
 
