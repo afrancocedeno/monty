@@ -94,9 +94,13 @@ void opcode_pop(stack_t **head_list, unsigned int line_number)
 	(void)line_number;
 
 	if (top_element->next != NULL)
+	{
 		top_element->next->prev = NULL;
-	*head_list = (*top_element).next;
-	free(top_element);
+		*head_list = (*top_element).next;
+		free(top_element);
+	}
+	else if (head_list == NULL || *head_list == NULL)
+		free_dlistint();
 }
 
 /**
