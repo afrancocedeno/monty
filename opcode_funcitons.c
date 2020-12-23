@@ -104,12 +104,10 @@ void opcode_pop(stack_t **head_list, unsigned int line_number)
 	*head_list = top_element->next;
 
 	if (top_element->next != NULL)
-	{
 		top_element->next->prev = NULL;
-		free(top_element);
-	}
-	else
-		free_dlistint();
+
+	free(top_element);
+
 }
 
 /**
