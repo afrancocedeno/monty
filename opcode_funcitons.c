@@ -121,10 +121,7 @@ void opcode_swap(stack_t **head_list, unsigned int line_number)
 	int aux_n;
 	stack_t *ptr_tmp = *head_list;
 
-	if (ptr_tmp == NULL)
-		return;
-
-	if (ptr_tmp->next->next == NULL || ptr_tmp->next == NULL)
+	if (ptr_tmp == NULL || ptr_tmp->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		free_dlistint();
