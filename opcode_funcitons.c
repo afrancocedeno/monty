@@ -76,12 +76,17 @@ void opcode_pint(stack_t **head_list, unsigned int line_number)
 
 	printf("%d\n", (*top_element).n);
 }
-
+/**
+* opcode_pop - missing description
+* @head_list: missing description
+* @line_number: missing description
+* Return: Nothing
+*/
 void opcode_pop(stack_t **head_list, unsigned int line_number)
 {
 	stack_t *top_element = *head_list;
 	(void)line_number;
 
-	head_list = (*head_list).next;
+	head_list = (*(*head_list)).next;
 	free(top_element);
 }
