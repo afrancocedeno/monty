@@ -61,6 +61,7 @@ void opcode_push(stack_t **head_list, unsigned int line_number);
 void opcode_pall(stack_t **head_list, unsigned int line_number);
 void opcode_pint(stack_t **head_list, unsigned int line_number);
 void opcode_pop(stack_t **head_list, unsigned int line_number);
+void opcode_swap(stack_t **head_list, unsigned int line_number);
 void free_dlistint(void);
 
 #endif
