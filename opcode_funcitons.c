@@ -100,7 +100,11 @@ void opcode_pop(stack_t **head_list, unsigned int line_number)
 		free(top_element);
 	}
 	else if (head_list == NULL || *head_list == NULL)
+	{
 		free_dlistint();
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 }
 
 /**
